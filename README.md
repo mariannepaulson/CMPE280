@@ -1,7 +1,9 @@
 # CMPE280
 This is Marianne's First Github upload
 
-1) Fetch the code
+1) Fetch the code with 
+
+git clone https://github.com/mariannepaulson/CMPE280.git
 
 2) Navigate to where you fetched the code
 
