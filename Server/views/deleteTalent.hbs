@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Talent to Delete</title>
+    <title>Delete Talent</title>
 </head>
 
 <body>
+
 {{> header}}
 <h1>{{pageTitle}}</h1>
 
@@ -31,16 +32,13 @@
         </tr>
     {{/each}}
 </table>
-<form method='post' action='/deletetalent'
 
-
+<br>
+<form method="post" action="/deleteTalent/{{fname}}">
 <fieldset>
-  <p>
-            <button type = "button"
-            value = "submit" >
-            delete
-          </button>
-  </p>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
 </fieldset>
 </form>
 

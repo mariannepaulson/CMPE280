@@ -7,6 +7,8 @@ let app = express();
 var router = express.Router();
 var cntrMain = require('../controllers/main');
 
+app.use(express.static(__dirname+'/public'));
+
 //MongoDB code
 var modelMain = require("../models/modelMain");
 var mongo = require('mongodb');
@@ -26,11 +28,11 @@ router.get('/home', cntrMain.home);
 
 /* Routes associated with Talent */
 router.get('/talent', modelMain.get_talent);
-router.get('/newTalent', cntrMain.new_talent);
+router.get('/addTalent', cntrMain.new_talent);
 router.post('/addTalent', modelMain.add_talent);
 router.get('/talent/:fname', modelMain.get_searchtalent);
-router.get('/deletetalent/:fname', modelMain.get_deletetalent);
-router.post('/deletetalent/:fname', modelMain.post_deletetalent);
+router.get('/deleteTalent/:fname', cntrMain.get_deletetalent);
+router.post('/deleteTalent/:fname', modelMain.post_deletetalent);
 
 /*
  * To get the registration page

@@ -167,7 +167,6 @@ module.exports.postLogin = function(req, res){
  * Logout session
  */
 
-
 module.exports.getLogout = function(req, res){
 
 	if (req.session.user)
@@ -191,5 +190,25 @@ module.exports.getLogout = function(req, res){
 };
 
 module.exports.new_talent = function(req,res){
-  res.render('newTalent.hbs');
+  res.render('newTalent.hbs', {currentYear: new Date().getFullYear()});
 }
+
+module.exports.get_deletetalent = function(req, res)
+{
+    var db = req.db;
+    var fname = req.params.fname;
+
+    var collection = db.get('talent');
+
+    collection.find({fname: fname},
+        function(err, docs)
+        {
+            res.render('deleteTalent.hbs', {
+                pageTitle: 'Talent to delete:' + fname,
+                fname: fname,
+                talent: docs,
+                currentYear: new Date().getFullYear()
+            })
+
+        });
+};
