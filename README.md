@@ -28,17 +28,11 @@ git clone https://github.com/mariannepaulson/CMPE280.git
 	
 You can push your changes as follows:
 ------------------------------------
-Invoke Gitbash where code install
-Change whatever needs to change
-git add .
-git commit -m "what you changed"
-git remote add Unique_name_you_choose https://github.com/mariannepaulson/CMPE280.git
-git push Unique_name_you_choose
-Check if changes came over correctly in github
-	
-	
-	
-	
+1) Invoke Gitbash
+2) git add .
+3) git commit -m "comments"
+4) git push
 
-	
-       
+Note1: If cannot push you might have to pull first
+Note2: You might have to do this command but not sure
+		git remote add Unique_name_you_choose https://github.com/mariannepaulson/CMPE280.git
