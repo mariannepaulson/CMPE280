@@ -98,22 +98,38 @@ module.exports.post_deletetalent = function(req, res)
 
 module.exports.get_addRecords = function(req, res){
 
-	var jsonData = require('../MOCK_DATA.json');
-	var MongoClient = require('mongodb').MongoClient;
-	var url = "mongodb://localhost:27017/";
-	MongoClient.connect(url, function(err, db) {
-	    if (err) throw err;
-	    var dbase = db.db("eRecruitDB");
-	    dbase.createCollection("talent", function(err, res) {
-	        if (err) throw err;
-	        console.log("Collection created!");
-	        dbase.collection("talent").insertMany(jsonData, function (err, result) {
-	            if (err) throw err;
-	            console.log("1000 Recorded Inserted");
-	    });
+  	var jsonData = require('../MOCK_DATA.json');
+  	var MongoClient = require('mongodb').MongoClient;
+  	var url = "mongodb://localhost:27017/";
+  	MongoClient.connect(url, function(err, db) {
+  	    if (err) throw err;
+  	    var dbase = db.db("eRecruitDB");
+  	    dbase.createCollection("talent", function(err, res) {
+  	        if (err) throw err;
+  	        console.log("Collection created!");
+  	        dbase.collection("talent").insertMany(jsonData, function (err, result) {
+  	            if (err) throw err;
+  	            console.log("1000 Recorded Inserted");
+  	    });
 
-	});
-	});
+  	});
+  	});
 
-	res.send('Successfully inserted 1000 rows into database');
+  	res.send('Successfully inserted 1000 rows into database');
+  };
+  /* MP's attempt to make it the same syntax as what we have. But doesn't work. Does not recocnize function insertMany
+  var db = req.db;
+  var collection = db.get('talent');
+  var jsonData = require('../MOCK_DATA.json');
+  collection.insertMany(jsonData, function (err, docs)
+                     {
+                         if (err) {
+                             res.send("Insert failed.");
+                         }
+                         else {
+                             res.redirect("talent");
+                         }
+                     });
+
 };
+*/
