@@ -91,3 +91,29 @@ module.exports.post_deletetalent = function(req, res)
             }
         });
 };
+
+/*
+ * Get add records into database
+ */
+
+module.exports.get_addRecords = function(req, res){
+
+	var jsonData = require('../MOCK_DATA.json');
+	var MongoClient = require('mongodb').MongoClient;
+	var url = "mongodb://localhost:27017/";
+	MongoClient.connect(url, function(err, db) {
+	    if (err) throw err;
+	    var dbase = db.db("eRecruitDB");
+	    dbase.createCollection("talent", function(err, res) {
+	        if (err) throw err;
+	        console.log("Collection created!");
+	        dbase.collection("talent").insertMany(jsonData, function (err, result) {
+	            if (err) throw err;
+	            console.log("1000 Recorded Inserted");
+	    });
+
+	});
+	});
+
+	res.send('Successfully inserted 1000 rows into database');
+};

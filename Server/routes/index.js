@@ -33,6 +33,7 @@ router.post('/addTalent', modelMain.add_talent);
 router.get('/talent/:fname', modelMain.get_searchtalent);
 router.get('/deleteTalent/:fname', cntrMain.get_deletetalent);
 router.post('/deleteTalent/:fname', modelMain.post_deletetalent);
+router.get('/addRecords', modelMain.get_addRecords);
 
 /*
  * To get the registration page
